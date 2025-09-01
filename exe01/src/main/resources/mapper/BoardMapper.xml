@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.board.mapper.BoardMapper">
-	<!-- 전체조회-->
+	 <sql id="criterid">
+        <where>
+       <if test="title != null" >
+           UPPER(title) LIKE '%' || UPPER(#{title})||'%'
+       </if>
+       </where>
+   </sql>
+	<!-- 전체조회
 	<select id="selectBoardList" resultType="BoardVO">
 		select   bno,
 		         title,
@@ -10,5 +17,19 @@
 		         regdate,
 		         updatedate
 		from     tbl_board
+	</select>-->
+	<select id="selectCount" resultType="Long">
+	 	select count(*)
+ 	    from tbl_board
+ 	    <include refid="criterid"></include>
+	</select>
+	
+	<select id="selectBoardList" resultType="BoardVO">
+	 SELECT * FROM (
+                 SELECT  /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */
+                  ROWNUM RN,E.*
+                  FROM TBL_BOARD E
+			  <include refid="criterid"></include>
+              )B WHERE RN BETWEEN #{first} AND #{last}
 	</select>
 </mapper>
