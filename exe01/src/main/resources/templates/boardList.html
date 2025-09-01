@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <h1>게시판목록</h1>
+ <table>
+  <tr>
+    <th>bno</th>
+    <th>title</th>
+    <th>content</th>
+    <th>writer</th>
+    <th>regdate</th>
+  </tr>
+  <tr th:each="boards: ${boardList}">
+    <td th:text="${boards.bno}"></td>
+    <td th:text="${boards.title}"></td>
+    <td th:text="${boards.content}"></td>
+    <td th:text="${boards.writer}"></td>
+     <td th:text="${boards.regdate}"></td>
+  </tr>
+ </table>
+</body>
+</html>

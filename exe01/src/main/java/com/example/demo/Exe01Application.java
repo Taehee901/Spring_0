@@ -4,7 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MapperScan //mapper 찾음
+@MapperScan(basePackages = "com.example.demo.**.mapper" ) //mapper 찾음{"",""}
 @SpringBootApplication
 public class Exe01Application {
 
