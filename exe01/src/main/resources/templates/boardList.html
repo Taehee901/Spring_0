@@ -3,9 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <script>
+ 	function gopage(p){
+		frmSearch.page.value = p;
+		frmSearch.submit();
+		//location.href= 'empList?page=' + p
+	}
+	function init(){
+		frmSearch.departmentId.value=""
+		frmSearch.firstName.value=""
+		frmSearch.managerId.value=""
+	}
+ </script>
 </head>
 <body>
  <h1>게시판목록</h1>
+ <form name="frmSearch" th:object="${boardVO}" action="boardList">
+		<input type="hidden" name="page">
+	</form>
  <table>
   <tr>
     <th>bno</th>

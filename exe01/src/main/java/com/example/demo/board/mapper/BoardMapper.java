@@ -10,7 +10,7 @@ import com.example.demo.emp.service.EmpVO;
 @Mapper
 public interface BoardMapper {
 	//전체조회
-	List<BoardVO> selectBoardList(BoardVO boardVO) ;
+	List<BoardVO> selectBoardList(BoardVO boardVO);
 	//건수조회
 	Long selectCount(BoardVO boardVO); 	
 }
