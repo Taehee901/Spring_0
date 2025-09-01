@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
  <script>
  	function gopage(p){
 		frmSearch.page.value = p;
@@ -10,31 +11,33 @@
 		//location.href= 'empList?page=' + p
 	}
 	function init(){
-		frmSearch.departmentId.value=""
-		frmSearch.firstName.value=""
+		frmSearch.title.value=""
+		frmSearch.writer.value=""
 		frmSearch.managerId.value=""
 	}
  </script>
 </head>
 <body>
- <h1>게시판목록</h1>
+ <h1>토론목록내역</h1>
  <form name="frmSearch" th:object="${boardVO}" action="boardList">
 		<input type="hidden" name="page">
 	</form>
- <table>
+ <table class="table">
   <tr>
     <th>bno</th>
     <th>title</th>
-    <th>content</th>
     <th>writer</th>
+    <th>content</th>
     <th>regdate</th>
+    <th>updatedate</th>
   </tr>
   <tr th:each="boards,stat: ${boardList}">
     <td th:text="${boards.bno}"></td>
-    <td th:text="${boards.title}"></td>
+    <td><a th:href="@{/board(bno=${boards.bno})}" th:text="${boards.title}">제목</a></td>
     <td th:text="${boards.content}"></td>
     <td th:text="${boards.writer}"></td>
-     <td th:text="${boards.regdate}"></td>
+    <td th:text="${#dates.format(boards.regdate, 'yyyy-MM-dd HH:mm:ss')}">2024-01-01</td>
+    <td th:text="${#dates.format(boards.updatedate, 'yyyy-MM-dd HH:mm:ss')}">2024-01-01</td>
   </tr>
  </table>
   <!-- 페이징 시작 -->

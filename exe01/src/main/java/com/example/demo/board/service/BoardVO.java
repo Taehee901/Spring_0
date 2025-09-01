@@ -1,5 +1,7 @@
 package com.example.demo.board.service;
 
+import java.util.Date;
+
 import com.example.demo.common.SearchVO;
 
 import lombok.Data;
@@ -10,6 +12,6 @@ public class BoardVO extends SearchVO{
  private String title;
  private String content;
  private String writer;
- private String regdate;
- private String updatedate;
+ private Date regdate;
+ private Date updatedate;
 }

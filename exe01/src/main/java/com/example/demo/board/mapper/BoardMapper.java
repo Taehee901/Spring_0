@@ -12,5 +12,7 @@ public interface BoardMapper {
 	//전체조회
 	List<BoardVO> selectBoardList(BoardVO boardVO);
 	//건수조회
-	Long selectCount(BoardVO boardVO); 	
+	Long selectCount(BoardVO boardVO); 
+	//단건조회
+	BoardVO selectBno(Long bno);
 }

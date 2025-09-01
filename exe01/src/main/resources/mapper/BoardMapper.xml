@@ -32,4 +32,20 @@
 			  <include refid="criterid"></include>
               )B WHERE RN BETWEEN #{first} AND #{last}
 	</select>
+	
+	 <resultMap type="empVO" id="empMap">
+ 	    <association property="deptVO" column="department_id" javaType="DeptVO" select="selectDeptById"/>
+    </resultMap>
+	<!-- 단건조회 -->
+	<select id="selectBno" parameterType="Long" resultType="boardVO">
+		select   bno,
+		         title,
+		         content,
+		         writer,
+		         regdate,
+		         updatedate
+		from     tbl_board
+		where    bno = #{bno}
+	</select>
+	
 </mapper>

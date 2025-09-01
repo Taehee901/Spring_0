@@ -27,4 +27,10 @@ public class BoardController {
 	    model.addAttribute("boardList",boardMapper.selectBoardList(boardVO));
         return "boardList";
   }
+  //단건조회
+  @GetMapping("board")
+  public String board(Model model,Long bno) {
+	  model.addAttribute("board",boardMapper.selectBno(bno));
+	  return "board";
+  }
 }
