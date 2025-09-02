@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.common.Paging;
 import com.example.demo.emp.mapper.EmpMapper;
@@ -25,11 +26,8 @@ public class EmpController {
 		return "empList"; //empList.html
 	}
 	@GetMapping("emp") //localhost/emp?employeeId=100
-	public String emp(Model model,Long employeeId) {
+	public String emp(Model model,@RequestParam Long employeeId) {//원시데이터 하나니까..
 		model.addAttribute("emp",empMapper.selectEmpById(employeeId));
 		return "emp"; //emp.html
-		
 	}
-	
-	
 }

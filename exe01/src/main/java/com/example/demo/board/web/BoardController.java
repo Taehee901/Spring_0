@@ -8,8 +8,11 @@ import com.example.demo.board.mapper.BoardMapper;
 import com.example.demo.board.service.BoardVO;
 import com.example.demo.common.Paging;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -29,8 +32,14 @@ public class BoardController {
   }
   //단건조회
   @GetMapping("board")
-  public String board(Model model,Long bno) {
+  public String board(Model model,@RequestParam Long bno) {
+	  System.out.println(">>> bno=" + bno);
 	  model.addAttribute("board",boardMapper.selectBno(bno));
 	  return "board";
   }
+  //삭제
+	@PostMapping("delBoard")
+	public String delBoard(@RequestParam Long bno) {
+		return "redirect:/bordList";
+	}
 }

@@ -38,14 +38,38 @@
     </resultMap>
 	<!-- 단건조회 -->
 	<select id="selectBno" parameterType="Long" resultType="boardVO">
-		select   bno,
-		         title,
-		         content,
-		         writer,
-		         regdate,
-		         updatedate
-		from     tbl_board
-		where    bno = #{bno}
+		SELECT   BNO,
+		         TITLE,
+		         CONTENT,
+		         WRITER,
+		         REGDATE,
+		         UPDATEDATE
+		FROM     TBL_BOARD
+		WHERE    BNO = #{bno}
 	</select>
-	
+	<!-- 수정 -->
+	<update id="updateBoard">
+		update tbl_board set
+		     
+	</update>
+	<!-- 삭제 -->
+	<delete id="deleteBoard">
+		DELETE FROM TBL_BOARD
+		WHERE  BNO = #{bno}
+	</delete>
+	<!-- 등록 -->
+	<insert id="insertBoard">
+		insert into tbl_board(
+				bno,
+				title,
+				content,
+				writer
+		)
+		values(
+			#{bno},
+			#{title},
+			#{content},
+			#{writer}
+		)
+	</insert>
 </mapper>

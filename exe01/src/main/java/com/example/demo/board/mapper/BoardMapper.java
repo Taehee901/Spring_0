@@ -15,4 +15,6 @@ public interface BoardMapper {
 	Long selectCount(BoardVO boardVO); 
 	//단건조회
 	BoardVO selectBno(Long bno);
+	//삭제
+	int deleteBoard(Long bno);
 }
