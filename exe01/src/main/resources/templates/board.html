@@ -36,8 +36,8 @@
 
 <!--  댓글등록시작 -->
 <form name="replyForm">
-	<input name="reply">
-	<input name="replyer">
+	<input name="reply" placeholder="작성내용">
+	<input name="replyer" placeholder="작성자">
 	<input name="bno" type="hidden" th:value="${board.bno}">
 	<button type="button" class="btnReplyInsert">댓글저장</button>
 </form>
@@ -171,8 +171,8 @@ function replyFormMake(item){
 	let tag = document.createElement("div");
 	tag.className = "replyUpdateForm row mt-2 border";
 	tag.innerHTML = `
-        <div class="col-6"><input id="reply" value="${item.reply}" data-value="${item.reply}"></div>
         <div class="col-3"><input id="replyer" value="${item.replyer}" data-value="${item.replyer}" readonly></div>
+        <div class="col-6"><input id="reply" value="${item.reply}" data-value="${item.reply}"></div>
         <div class="col-3">
         <button type="button"
                 data-rno="${item.rno}" 
@@ -194,10 +194,11 @@ function replyUpdate(){
 			const div = event.target.closest(".replyUpdateForm");
 			const rno = event.target.dataset.rno;
 			const reply = div.querySelector("#reply").value;
-			
+			const replyer = div.querySelector("#replyer").value;
 			const param = {
 				rno: rno,
-				reply: reply
+				reply: reply,
+				replyer: replyer
 			};
 			
 			fetch(`/reply/${rno}`, {
