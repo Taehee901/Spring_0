@@ -14,16 +14,23 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.ex1.UserVO;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Mono;
 
+@Tag(name = "회원관리",description = "게임사이트 회원 가입")//name:태그이름, 설명
 @RequestMapping("/api")
 @RestController //@Controller + @ResponseBody
 public class Ex2Controller {
+	@Tag(name = "회원관리 API")
+	@Operation(summary = "회원조회")
 	// UserVO 단건조회
 	@GetMapping("/rest1")
 	public UserVO rest1() {
 		return new UserVO("홍길동",20,new Date(),Arrays.asList("게임","잠자기"));//server.select()
 	}
+	@Tag(name = "회원관리 API")
+	@Operation(summary = "회원단건조회")
 	//쿼리스트링으로 보냄,rest2에 값을 받아서 파라미터받아서 담고 json스트링으로 넘어감,
 	//requestbody없는경우 일반 스트링방식,클라이언트가 데이터를 쿼리 파라미터(GET) 또는 폼 데이터(POST form)로 보낸다
 	@GetMapping("/rest2")//query String

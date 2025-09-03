@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+ <html xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}" >
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -8,7 +10,7 @@
  table th, table td{border:1px solid black;}
 </style>
 </head>
-<body>
+<body layout:fragment="content">
  <h1>사원정보</h1>
      <table >
       <tr>

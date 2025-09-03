@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+ <html xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}" >
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
 </head>
-<body>
+<body layout:fragment="content">
+<div class="container">
 <!--  게시글 단건조회 시작 -->
-<h1>토론상세</h1>
-<div>
-<table class="table text-center">
+<div class="card mb-3">
+<div class="card-body">
+  <h5 class="card-title">토론상세</h5>
+  <table class="table text-center">
 <tr>
     <td>bno</td>
      <td th:text="${board.bno}">100</td>
@@ -32,8 +37,12 @@
   </tr>
 </table>
 <!--  게시글 단건조회 끝 -->
+  </div>
+  </div>
+<div>
 
-
+<div class="card mb-3">
+<div class="card-body">
 <!--  댓글등록시작 -->
 <form name="replyForm">
 	<input name="reply" placeholder="작성내용">
@@ -41,12 +50,27 @@
 	<input name="bno" type="hidden" th:value="${board.bno}">
 	<button type="button" class="btnReplyInsert">댓글저장</button>
 </form>
+</div>
+</div>
+
+<div class="card mb-3">
+<div class="card-body">
 <!--  댓글등록끝 -->
+<h5 class="card-title">댓글목록</h5>
 <!--  댓글시작 -->
- <div id="replyList" class="replys"></div>
+ <div id="replyList" class="replys">
+   <!--  <div class="row boarder">
+    <div class="col-lg-2">홍길동</div>
+    <div class="col-lg-6">댓글잘부탁합니다.....</div>
+    <div class="col-lg-4"><button>수정</button><button></button></div>
+  </div>-->
+ </div>
 <!--  댓글끝 -->
 </div>
-</body>
+</div>
+</div>
+</div>
+
 <script>
 const url = "/reply";//공통uri
 replyDelete();
@@ -61,7 +85,6 @@ replyCancel();
 ---------------------------------------*/	
 function replyInsert(){
 	document.querySelector(".btnReplyInsert").addEventListener("click", function(){
-
 		//파라미터 만들기
 		const reply = replyForm.reply.value;
 		const replyer = replyForm.replyer.value;
@@ -95,9 +118,9 @@ function replyList(){
 댓글 조회 콜백
 ---------------------------------------*/
 function replyListCallback(result){
-	const replys = document.querySelector(".replys");
+	const replys = document.querySelector(".replys");// = #replyList
 	replys.innerHTML = "";
-	result.forEach(item => replys.insertAdjacentElement("beforeend", replyMake(item)) );
+	result.forEach(item => replys.insertAdjacentElement("beforeend", replyMake(item)) );//댓글리스트 목록,
 }
 
 /*-------------------------------------
@@ -107,16 +130,17 @@ function replyMake(item){
 	let tag = document.createElement("div");
 	tag.className = "row mt-2";
 	tag.innerHTML = `
-        <div class="col-6">${item.reply}</div>
-        <div class="col-3">${item.replyer}</div>
-        <div class="col-3">
+        <div class="col-lg-6">${item.reply}</div>
+        <div class="col-lg-2 text-danger">${item.replyer}</div>
+        <div class="col-lg-4">
           <button type="button"
                   data-rno="${item.rno}" 
                   class="btn btn-success btnReplyUpdateForm">수정</button>			                           
           <button type="button"
                   data-rno="${item.rno}" 
-                  class="btn btn-danger btnReplyDelete">삭제</button>
-        </div>`;
+                  class="btn btn-primary btnReplyDelete">삭제</button>
+        </div>
+        `;
     return tag;    
 }
 /*-------------------------------------
@@ -248,4 +272,5 @@ function replyCancel(){
 	}) // end of addEvent 		
 } //end of function
 </script>
+</body>
 </html>

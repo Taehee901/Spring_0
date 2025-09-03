@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+    <!--  컨트롤에서 넘어오는 녀석 필드명 -->
+        <form action="#" th:action="@{/person}" th:object="${personForm}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td><!-- th:value"${} ${personForm}객체에서 name속성 꺼내씀-->
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="text" th:field="*{age}" /></td>
+                    <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="text" th:field="*{phone}" /></td>
+                    <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
+                </tr>
+                 <tr>
+                    <td>Email:</td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</td>
+                </tr>
+                  <tr>
+                    <td>date:</td>
+                    <td><input type="date" th:field="*{startdate}" /></td>
+                    <td><input type="date" th:field="*{enddate}" /></td>
+                    <td th:if="${#fields.hasErrors('endDateAfterStartDate')}" th:errors="*{endDateAfterStartDate}">date Error</td>
+                </tr>               
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
- <html xmlns:th="http://www.thymeleaf.org">
+ <html xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}" > <!-- 레이아웃있는위치: 폴더명/파일명 -->
  <head>
  <meta charset="UTF-8">
  <title>Insert title here</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
  <style>
   .salaryed{color:red;}
   .salarybold{font-weight: bold;}
@@ -21,7 +23,7 @@
 	}
  </script>
  </head>
- <body>
+ <body  layout:fragment="content">
  <h1>사원목록</h1>
  <!--/*[[${}]]는 값을 출력 <%--%>*/-->
  <!-- 배열크기알려주는역할 <span th:text="${#lists.size(empList)}"></span>-->
@@ -94,5 +96,8 @@
 	  </ul>
 	</nav>
 	<!-- 페이징 종료 -->
+	<script th:inline="javascript"> //자바객체를 자바스트립트객체로 바꾸어서 볼수가 있게 된다.
+		let list = `[[${empList}]]`  // ``없이 그냥실행하면 /*[[${empList}]]*/
+	</script>
  </body>
  </html>
