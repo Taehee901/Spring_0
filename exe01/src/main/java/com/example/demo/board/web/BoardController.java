@@ -40,9 +40,10 @@ public class BoardController {
 	  model.addAttribute("board",boardService.selectBno(bno));
 	  return "board";
   }
-  //삭제
+  //폼 기반 삭제요청
 	@PostMapping("/delBoard")
-	public String delBoard(@RequestParam Long bno) {
-		return "redirect:/bordList";
+	public String delBoard(@RequestParam("bno") Long bno) {
+		boardService.deleteBoard(bno);
+		return "redirect:/boardList";
 	}
 }
