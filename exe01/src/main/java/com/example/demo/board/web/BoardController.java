@@ -13,16 +13,17 @@ import com.example.demo.emp.service.EmpService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+@RequestMapping("/board")
 @Controller
 public class BoardController {
 //  @Autowired BoardMapper boardMapper;
    @Autowired BoardService boardService;
   // boardList데이터를 꺼낼 때 사용할 이름
-  @GetMapping("boardList")
+  @GetMapping("/boardList")
   public String boardList(Model model,BoardVO boardVO,Paging paging) {
 		//페이징관련
 		paging.setPageUnit(5);//페이징건수
@@ -33,14 +34,14 @@ public class BoardController {
         return "boardList";
   }
   //단건조회
-  @GetMapping("board")
+  @GetMapping("/board")
   public String board(Model model,@RequestParam Long bno) {
 	  System.out.println(">>> bno=" + bno);
 	  model.addAttribute("board",boardService.selectBno(bno));
 	  return "board";
   }
   //삭제
-	@PostMapping("delBoard")
+	@PostMapping("/delBoard")
 	public String delBoard(@RequestParam Long bno) {
 		return "redirect:/bordList";
 	}

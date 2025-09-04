@@ -22,7 +22,7 @@
  </script>
 </head>
 <body layout:fragment="content">
- <h1>토론목록내역</h1>
+ <h1>토론목록내역============</h1>
  <form name="frmSearch" th:object="${boardVO}" action="boardList">
 		<input type="hidden" name="page">
 		<!-- <select name="bno" th:value="*{bno}">
@@ -39,7 +39,7 @@
 		writer<input name="writer" th:value="*{writer}">
 		<button type="button" onclick="gopage(1)">검색</button>
 		<button type="button" onclick="init()">초기화</button>
-	</form>
+	</form>============
  <table class="table">
   <tr>
     <th>bno</th>
@@ -49,10 +49,10 @@
     <th>regdate</th>
     <th>updatedate</th>
     <th>삭제</th>
-  </tr>
+  </tr>   
   <tr th:each="boards,stat: ${boardList}">
     <td th:text="${boards.bno}"></td>
-    <td><a th:href="@{/board(bno=${boards.bno})}" th:text="${boards.title}">제목</a></td>
+    <td><a th:href="@{/board/board(bno=${boards.bno})}" th:text="${boards.title}">제목</a></td>
     <td th:text="${boards.content}"></td>
     <td th:text="${boards.writer}"></td>
     <td th:text="${#dates.format(boards.regdate, 'yyyy-MM-dd HH:mm:ss')}">2024-01-01</td>
