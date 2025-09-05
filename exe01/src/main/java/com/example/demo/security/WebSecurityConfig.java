@@ -33,7 +33,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home").permitAll()//모두 접근가능
+				.requestMatchers("/", "/home","/upload/**").permitAll()//모두 접근가능,업로드경로 지정안해준 경우 로그인 후 가능
 				.requestMatchers("/emp/**").hasRole("ADMIN")//롤을 찾아가는 녀석
 				.anyRequest().authenticated() // "/","/home"이 외에는 인증이가능해야 페이지에 접근이 허용된다.
 			)
@@ -77,8 +77,6 @@ public class WebSecurityConfig {
 					.build();
 	
 //	//DB에서 사용
-	
-	
 
 		return new InMemoryUserDetailsManager(user,admin);
 	}

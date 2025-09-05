@@ -43,33 +43,41 @@
 		         CONTENT,
 		         WRITER,
 		         REGDATE,
-		         UPDATEDATE
+		         UPDATEDATE,
+		         attach
 		FROM     TBL_BOARD
 		WHERE    BNO = #{bno}
 	</select>
 	<!-- 수정 -->
-	<update id="updateBoard">
-		update tbl_board set
-		     
+	<update id="updateBoard" parameterType="boardVO">
+	  UPDATE tbl_board
+	     SET
+	         title = #{title},
+	         content = #{content},
+	         writer = #{writer},
+	         updateDate = sysdate
+	   WHERE bno = #{bno}
 	</update>
 	<!-- 삭제 -->
-	<delete id="deleteBoard">
+	<delete id="deleteBoard"  parameterType="long">
 		DELETE FROM TBL_BOARD
 		WHERE  BNO = #{bno}
 	</delete>
 	<!-- 등록 -->
-	<insert id="insertBoard">
+	<insert id="insertBoard"  parameterType="boardVO">
 		insert into tbl_board(
 				bno,
 				title,
 				content,
-				writer
+				writer,
+				attach
 		)
 		values(
-			#{bno},
+			seq_board.nextval,
 			#{title},
 			#{content},
-			#{writer}
+			#{writer},
+			#{attach}
 		)
 	</insert>
 </mapper>

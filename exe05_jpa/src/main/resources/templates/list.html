@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>고객정보</h1>
+<table>
+<!--  컨트롤러에서 넘긴 list -->
+	<tr th:each="cust : ${list}">
+		<td th:text="${cust.id}">아이디: </td>
+		<td th:text="${cust.name}">이름: </td>
+		<td th:text="${cust.phone}">폰: </td>
+	</tr>
+</table>
+</body>
+</html>

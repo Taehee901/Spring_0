@@ -63,7 +63,7 @@
     	<input type="hidden" name="bno" th:value="${boards.bno}">
     	<button class="btn btn-danger btn-sm " type="submit" onclick="if(confirm('정말 삭제하시겠습니까?')) this.form.submit();">삭제</button>
     </form>-->
-	<form th:action="@{/delBoard}" method="post">
+	<form th:action="@{/board/boardList}" method="post">
 	    <input type="hidden" name="bno" th:value="${boards.bno}">
 	    <button class="btn btn-danger btn-sm"
 	            type="submit"

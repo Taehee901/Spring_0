@@ -28,6 +28,18 @@
     <td th:text="${board.content}">내용</td>
   </tr>
    <tr>
+   <tr>
+    <td>첨부파일</td>
+    <td>
+    <!--  상대경로와 절대경로 차이 
+      상대경로 :  현재 페이지를 기준으로 경로를 지정 : "|filedown/${board.attach}|" 
+      절대경로 :  웹사이트의 루트(최상위)를 기준으로 경로를 지정 : "|/board/filedown/${board.attach}|"
+    -->
+    	<a th:href="|filedown/${board.attach}|" th:text="${board.attach}"></a>
+    	<img th:src="|/upload/${board.attach}|">
+    </td>
+  </tr>
+   
     <td>writer</td>
     <td th:text="${board.writer}">작성자</td>
   </tr>
