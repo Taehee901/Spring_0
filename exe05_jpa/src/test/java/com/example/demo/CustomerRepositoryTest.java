@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.example.demo.domain.Customer;
 import com.example.demo.repository.CustomerRepository;
 
-@SpringBootTest
+@SpringBootTest // = DataJapTest는 자동 DB rollback이며,springBootTest대신 @DataJpaTest사용가능
 public class CustomerRepositoryTest {
 
 	@Autowired CustomerRepository customerTepository;
@@ -26,7 +26,7 @@ public class CustomerRepositoryTest {
 		System.out.println(customer);
 	}
 	//@Test
-	public void delete() {
+	public void delete() {//삭제 방법. 1.단건조회 -> 삭제 2.where조건에 id를 지정
 		//단건조회
 		Customer customer = customerTepository.findById(1L).get();
 		//삭제
