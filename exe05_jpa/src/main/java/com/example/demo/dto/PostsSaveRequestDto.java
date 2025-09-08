@@ -18,7 +18,7 @@ public class PostsSaveRequestDto {
 	}
 	
 	
-	
+	//엔티티로 변환
 	public Posts toEntity() {
 		return Posts.builder()
 				.title(title)

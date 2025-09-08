@@ -5,14 +5,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Data;
-
-@Data
+import lombok.Getter;
+@Getter
+//@Data
 @Entity
 public class Bread {
 	public Bread() {};//기본생성자 필수
+	@Builder
 	public Bread(String breadName, String breadContent, int salary) {
-	    this.breadName = breadName;
+		this.breadName = breadName;
 	    this.breadContent = breadContent;
 	    this.salary = salary;
 	}
@@ -25,4 +28,10 @@ public class Bread {
 	private String breadContent;
 	@Column(nullable = false)
 	private int salary;
+	
+    public void update(String breadName, String breadContent,int salary) {
+        this.breadName = breadName;
+        this.breadContent = breadContent;
+        this.salary = salary;
+    }
 }
