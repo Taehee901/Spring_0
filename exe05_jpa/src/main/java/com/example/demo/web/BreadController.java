@@ -46,8 +46,8 @@ public class BreadController {
 		breadRepository.save(bread);
 		return "redirect:/allList";
 	}
-	//삭제: 특정 id
-	@PostMapping("deleteBread")
+	//삭제: 특정 id  @PathVariable -> 
+	@PostMapping("deleteBread/{id}")
 	public String deleteBread(@RequestParam("id") Long id) {
 		breadRepository.deleteById(id);
 		return "redirect:/allList";
