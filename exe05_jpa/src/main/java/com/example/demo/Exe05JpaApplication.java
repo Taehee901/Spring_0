@@ -42,7 +42,7 @@ public class Exe05JpaApplication {
 //	 log.info("");
 //	 };
 //   }
-//	@Bean
+	@Bean
 	public CommandLineRunner demo(BreadRepository repository) {
 		return(args)->{
 			repository.save(new Bread("크로와상","64겹",5000));

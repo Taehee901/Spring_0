@@ -16,7 +16,7 @@ import com.example.demo.repository.BreadRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
+//dto 분리,vo,breadDTO ->서비스,dto로넘겨서 entity로,조회할때는 entity dto
 @Controller
 public class BreadController {
 	@Autowired BreadRepository breadRepository;
