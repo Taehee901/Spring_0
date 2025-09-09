@@ -16,7 +16,8 @@
  		<typeAlias alias="FileVO"			type="egovframework.com.cmm.service.FileVO" />
 		<typeAlias alias="ComDefaultCodeVO" type="egovframework.com.cmm.ComDefaultCodeVO" />
 		<typeAlias alias="comDefaultVO"		type="egovframework.com.cmm.ComDefaultVO" /> 
-		<!-- <package name="egovframework.com"/> -->
+		<!--  패키지 스캔 후 모든 클래스는 알리아스 등록되게 만듦 -->
+		<package name="com.yedam"/> 
 	</typeAliases>
     
 </configuration>

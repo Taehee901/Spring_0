@@ -9,7 +9,7 @@ import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
 @Repository("customerDAO")
 public class CustomerDAO extends EgovComAbstractDAO{
 
-	//단건조회
+	//단건조회,mapper namespace와 동일
 	public CustomerVO selectCustomerDetail(Long id) {
 		return selectOne("CustomerDAO.slectOne", id);
 	}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>책 등록</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<header class="bg-light py-3 mb-4">
+    <div class="container">
+        <h3 class="text-center">도서대여관리</h3>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" th:href="@{/bookAdd}">도서등록</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/bookList}">도서목록조회/수정</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/bookJoin}">대여현황조회</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">홈으로</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+	<div class="container">
+		<header>
+			<h1 class="text-center">등록페이지</h1>
+		</header>
+		<main class="card">
+			<div class="card-header">
+				<div class=" row justify-content-between">
+					<div class="col-4 text-start">Board Add</div>
+					<div class="col-4 text-end">
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+			<form th:action="@{/bookAdd}" method="post">
+    			<label>도서번호</label>
+				<input type="text" name="bookNo" readonly th:value="${bookAdd}"><br>
+				<label>도서명</label>
+				<input type="text" name="bookName"><br>
+				<label>도서표지</label>
+				<input type="text" name="bookCoverimg"><br>
+				<label>출판일자</label>
+				<input type="text" name="bookDate"><br>
+				<label>금액</label>
+				<input type="text" name="bookPrice"><br>
+				<label>출판사</label>
+				<input type="text" name="bookPublisher"><br>
+			    <label>도서소개</label>
+				<input type="text" name="bookInfo"><br>
+				<button type="submit">등록</button>
+			</form>
+		</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>도서대여관리</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<header class="bg-light py-3 mb-4">
+    <div class="container">
+        <h3 class="text-center">도서대여관리</h3>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link" th:href="@{/bookAdd}">도서등록</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/bookList}">도서목록조회/수정</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/bookJoin}">대여현황조회</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">홈으로</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <h4 class="mb-3">도서대여관리 프로그램</h4>
+    <p>국제 대여점의 도서등록,대여정보 데이터베이스를 구축하고 도서.DVD대여관리를 위한 프로그램이다.</p>
+    <p>프로그램 작성순서</p>
+    <ol>
+    <li>도서정보 테이블을 생성한다.</li>
+    <li>대여정보 테이블을 생성한다.</li>
+    <li>도서정보,대여정보 테이블에 제시된 문제지의 참조 데이터를 추가 생성한다.</li>
+    <li>도서정보 조회 프로그램을 작성한다.</li>
+    <li>대여정보 조회 프로그램을 작성한다.</li>
+    </ol>
+    </main>
+</body>
+</html>

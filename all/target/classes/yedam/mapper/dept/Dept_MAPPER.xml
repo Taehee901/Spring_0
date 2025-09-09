@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="deptDAO"> -->
+<mapper namespace="com.yedam.dept.service.impl.DeptMapper">
+	
+
+	<resultMap id="dept" type="com.yedam.dept.service.DeptVO">
+		<result property="id" column="ID" />
+		<result property="dname" column="DNAME" />
+		<result property="location" column="LOCATION" />
+		<result property="managerId" column="MANAGER_ID" />
+	</resultMap>
+	
+	<insert id="insertDept">
+		<![CDATA[
+			INSERT INTO DEPT 
+				( ID
+				  , DNAME
+				  , LOCATION
+				  , MANAGER_ID )
+			VALUES ( #{id}
+				  , #{dname}
+				  , #{location}
+				  , #{managerId} )
+		]]>
+	</insert>
+	
+	<update id="updateDept">
+		<![CDATA[
+			UPDATE DEPT
+			SET ID=#{id}
+				, DNAME=#{dname}
+				, LOCATION=#{location}
+				, MANAGER_ID=#{managerId}
+						WHERE ID=#{id}
+				]]>
+	</update>
+	
+	<delete id="deleteDept">
+		<![CDATA[
+			DELETE FROM DEPT 
+						WHERE ID=#{id}
+				]]>
+	</delete>
+	
+	<select id="selectDept" resultMap="dept">
+		<![CDATA[
+			SELECT
+				ID
+				, DNAME
+				, LOCATION
+				, MANAGER_ID
+			FROM DEPT
+						WHERE ID=#{id}
+				]]>
+	</select>
+	
+	<select id="selectDeptList" parameterType="com.yedam.dept.service.DeptVO" resultType="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								ID
+								, DNAME
+								, LOCATION
+								, MANAGER_ID
+						FROM DEPT
+				WHERE 1=1
+				<if test="searchKeyword != null and searchKeyword != ''">
+					<if test="searchCondition == 0">AND
+						ID = #{searchKeyword}
+					</if>
+					<if test="searchCondition == 1">AND
+						DNAME LIKE '%' || #{searchKeyword} || '%'
+					</if>
+				</if>
+					ORDER BY 
+						ID DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	</select>	
+	<select id="selectDeptListTotCnt" parameterType="com.yedam.dept.service.DeptVO" resultType="int">
+			SELECT COUNT(*) totcnt
+			FROM DEPT
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<if test="searchCondition == 0">AND
+					ID = #{searchKeyword}
+				</if>
+				<if test="searchCondition == 1">AND
+					DNAME LIKE '%' || #{searchKeyword} || '%'
+				</if>
+			</if>
+	</select>
+
+</mapper>
