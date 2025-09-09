@@ -35,9 +35,9 @@ import egovframework.com.cop.bbs.service.EgovArticleService;
 @Service("EgovArticleService")
 public class EgovArticleServiceImpl extends EgovAbstractServiceImpl implements EgovArticleService {
 
-	@Resource(name = "EgovArticleDAO")//등록할때 이름 줌 -> mapper거,DAO를직접 만듦,앞에 네임서비스,
-//	@Autowired//구현클리스가 여러개이면 이름지정가능
-//	@Qualifier("EgovArticleDAO")
+	@Resource(name = "EgovArticleDAO")
+	//@Autowired
+	//@Qualifier("EgovArticleDAO")
     private EgovArticleDAO egovArticleDao;
 
     @Resource(name = "EgovFileMngService")

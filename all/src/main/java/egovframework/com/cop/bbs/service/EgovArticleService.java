@@ -1,5 +1,5 @@
 package egovframework.com.cop.bbs.service;
-//게시글 관련 
+
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public interface EgovArticleService {
 
   void updateArticleAndFiles(Board board, List<MultipartFile> files, String atchFileId)
       throws Exception;
-//참고
+
   void deleteArticle(Board board) throws Exception;
 
 	List<BoardVO> selectNoticeArticleList(BoardVO boardVO);

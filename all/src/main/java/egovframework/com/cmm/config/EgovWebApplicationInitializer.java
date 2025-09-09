@@ -70,7 +70,7 @@ public class EgovWebApplicationInitializer implements WebApplicationInitializer 
 		//characterEncoding.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "*.do");
 		
 		//-------------------------------------------------------------
-		// Spring ServletContextListener 설정,스프링설정파일 다읽음
+		// Spring ServletContextListener 설정
 		//-------------------------------------------------------------
 		XmlWebApplicationContext rootContext = new XmlWebApplicationContext();
 		rootContext.setConfigLocations(new String[] { "classpath*:egovframework/spring/com/**/context-*.xml" });
