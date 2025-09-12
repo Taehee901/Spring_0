@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- com.example.demo.**.mapper.EmpMapper루트  namespace 인터페이스 패키지명과 동일하게 해야하고 이름은 인터페이스 이름 select result타입이 필수-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.EmpMapper">
+	<select id="selectAll">
+		select *
+		 from employees
+		 <where>
+		 <if test="departmentId != null">
+		   department_id = #{departmentId}
+		 </if>
+		 <if test="fristName != null">
+		   and first_name = #{fristName}
+		  </if>
+		  <if test="salary">
+		   and salary = #{salary}
+		  </if>
+		   </where>
+	</select>
+</mapper>
