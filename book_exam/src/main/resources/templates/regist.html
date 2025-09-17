@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body layout:fragment="content">
+	<div class="container">
+		<main class="card">
+			<div class="card-body">
+				<h3>도서 등록</h3>
+				<form id="bookForm" action="regist" method="post">
+					<div class="mb-3">
+						<label for="bookNo" class="form-label">도서번호</label> <input
+							type="text" class="form-control" name="bookNo" id="bookNo"
+							readonly th:value="${bookNo}">
+					</div>				
+					<div class="mb-3">
+						<label for="bookName" class="form-label">도서명</label> <input
+							type="text" class="form-control" name="bookName" id="bookName"
+							placeholder="도서명 입력">
+					</div>
+					<div class="mb-3">
+						<label for="bookCoverimg" class="form-label">도서 표지</label> <input
+							type="text" class="form-control" name="bookCoverimg">
+					</div>
+					<div class="mb-3">
+						<label for="bookDate" class="form-label">출판일자</label> <input
+							type="date" class="form-control" name="bookDate">
+					</div>
+					<div class="mb-3">
+						<label for="bookPrice" class="form-label">가격</label> <input
+							type="number" class="form-control" name="bookPrice">
+					</div>
+					<div class="mb-3">
+						<label for="bookPublisher" class="form-label">출판사</label> <input
+							type="text" class="form-control" name="bookPublisher">
+					</div>
+					<div class="mb-3">
+						<label for="bookInfo" class="form-label">도서설명</label> <textarea
+							 class="form-control" name="bookInfo"></textarea>
+					</div>
+					<div class="d-grid justify-content-md-end">
+						<button class="btn btn-success" type="submit">등록</button>
+					</div>
+				</form>
+			</div>
+		</main>
+	</div>
+	<script>
+		//입력값 유효성체크
+		document.getElementById('bookForm').addEventListener('submit', function(e) {
+			const bookName = document.getElementById('bookName').value;
+			if (!bookName) {
+				alert("도서명을 입력하세요.");
+				e.preventDefault();
+			}
+			return true;
+		});
+	</script>
+</body>
+</html>

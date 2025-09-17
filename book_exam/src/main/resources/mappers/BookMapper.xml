@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yedam.service.BookService">
+
+<!-- 전체조회 -->
+<select id="selectBookNo" resultType="int">
+	SELECT seq_book.nextval
+	FROM   dual
+</select>
+
+<!-- 도서 삭제 -->
+<delete id="deleteBook">
+	DELETE from BOOK_TBL_06 where book_no = #{bookNo}
+</delete>
+
+
+<select id="selectBook" resultType="BookVO">
+	SELECT BOOK_NO,
+		   BOOK_NAME,
+		   BOOK_COVERIMG,
+		   TO_CHAR(BOOK_DATE, 'YYYY/MM/DD') AS BOOK_DATE,
+		   TO_CHAR(BOOK_PRICE, '999,999,999') AS BOOK_PRICE,
+		   BOOK_PUBLISHER,
+		   BOOK_INFO
+	FROM   BOOK_TBL_06
+	ORDER  BY BOOK_NO DESC
+</select>
+
+
+<select id="selectDetail" resultType="BookVO" parameterType="Long">
+	SELECT BOOK_NO,
+		   BOOK_NAME,
+		   BOOK_COVERIMG,
+		   TO_CHAR(BOOK_DATE, 'YYYY/MM/DD') AS BOOK_DATE,
+		   TO_CHAR(BOOK_PRICE, '999,999,999') AS BOOK_PRICE,
+		   BOOK_PUBLISHER,
+		   BOOK_INFO
+	FROM   BOOK_TBL_06
+	WHERE  BOOK_NO = #{bookNo}
+</select>
+
+<select id="selectRent" resultType="BookVO">
+	SELECT r.BOOK_NO,
+    	   b.BOOK_NAME,
+           COUNT(r.RENT_NO) AS RENT_COUNT,
+           SUM(r.RENT_PRICE) AS TOTAL_PRICE
+	       FROM RENT_TBL_06 r JOIN BOOK_TBL_06 b
+    						ON r.BOOK_NO = b.BOOK_NO
+    GROUP BY r.BOOK_NO, b.BOOK_NAME
+</select>
+
+<!-- 등록 -->
+<insert id="insertBook" parameterType="BookVO">
+	INSERT INTO BOOK_TBL_06 (
+        BOOK_NO,
+        BOOK_NAME,
+        BOOK_COVERIMG,
+        BOOK_DATE,
+        BOOK_PRICE,
+        BOOK_PUBLISHER,
+        BOOK_INFO
+    ) VALUES (
+        #{bookNo},
+        #{bookName},
+        #{bookCoverimg},
+        to_date(#{bookDate},'yyyy-MM-dd'),
+        #{bookPrice},
+        #{bookPublisher},
+        #{bookInfo}
+    )
+</insert>
+
+</mapper>
