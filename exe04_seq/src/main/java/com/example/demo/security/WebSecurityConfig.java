@@ -58,8 +58,7 @@ public class WebSecurityConfig {
 	AccessDeniedHandler accessDeniedHandler() {
 		return new CustomAccessDeniedHandler();
 	}
-
-	
+ 
 	//임의정보
 	//@Bean
 	public UserDetailsService userDetailsService() {
@@ -77,8 +76,6 @@ public class WebSecurityConfig {
 					.build();
 	
 //	//DB에서 사용
-	
-	
 
 		return new InMemoryUserDetailsManager(user,admin);
 	}
