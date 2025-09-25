@@ -1,5 +1,6 @@
 package com.example.demo.emp.service;
 
+import java.math.BigDecimal;
 //import java.math.BigDecimal;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmpVO extends SearchVO{
-  private Long employeeId;
+  private BigDecimal employeeId;
   private String firstName;
   private String lastName;
   private String email;
